@@ -1,0 +1,363 @@
+@charset "UTF-8";
+
+.container {
+    overflow: hidden;
+    width: 100vw;
+    font-family: '', sans-serif;
+    color: var(--primaryColor);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/*******　header　*********/
+
+header {
+    height: 100px;
+    background-color: #9bd6f4;
+    width: 100%;
+    display: flex;
+}
+
+header .logo {
+    color: #fff;
+    margin-left: 100px;
+    padding-top: 40px;
+    font-family: "Yu Mincho", "YuMincho", "游明朝体", "MS PMincho", serif;
+    font-size: 20px;
+    width: 100%;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+/* ここから下がハンバーガーメニューに関するCSS */
+  
+.drawer_hidden {
+  display: none;
+}
+
+.drawer_open {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  
+}
+
+.drawer_open span,
+.drawer_open span:before,
+.drawer_open span:after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background: #fff;
+  transition: 0.5s;
+  position: absolute;
+}
+
+
+.drawer_open span:before {
+  bottom: 8px;
+}
+
+.drawer_open span:after {
+  top: 8px;
+}
+
+
+#drawer_input:checked ~ .drawer_open span {
+  background: rgba(255, 255, 255, 0);
+}
+
+
+#drawer_input:checked ~ .drawer_open span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+
+#drawer_input:checked ~ .drawer_open span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+  
+.nav_content {
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    top: 7%;
+    left: 100%; 
+    z-index: 99;
+    background: #9bd6f4;
+    transition: .5s;
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+
+  #drawer_input:checked ~ .nav_content {
+    left: 0;
+  }
+
+
+.nav_list {
+  list-style: none;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+.nav_list .nav_item {
+    margin-bottom: 30px;
+}
+
+.nav_list .nav_item a {
+    color: #fff;
+    font-family: "Yu Mincho", "YuMincho", "游明朝体", "MS PMincho", serif;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.nav_list .nav_item a:hover {
+    opacity: 0.8;
+    text-decoration: underline solid 1px #fff;
+}
+
+
+
+#drawer_input:checked ~ .nav_content {
+  left: 0;
+}
+
+.logo a {
+    cursor: pointer;
+}
+.logo a:hover {
+    opacity: 0.8;
+}
+.cva {
+    position: relative;
+}
+.btn-1 {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 43%;
+    margin: auto;
+    transform-origin: center;
+    width: 40%;
+}
+.btn-2 {
+    position: absolute;
+    bottom: 30%;
+    left: 45%;
+    right: 0;
+    margin: auto;
+    transform-origin: center;
+    width: 40%;
+}
+
+.btn-1 a:hover {
+    opacity: 0.7;
+}
+
+.btn-2 a:hover {
+    opacity: 0.7;
+}
+
+.recommendation {
+    position: relative;
+}
+
+.change {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-origin: center;
+    width: 60%;
+}
+
+.question {
+    background-image: url(../images/qa-background.png);
+    background-size: cover;
+    padding-bottom: 100px;
+}
+
+.question h3 {
+    text-align: center;
+    font-family: "Yu Mincho", "YuMincho", "游明朝体", "MS PMincho", serif;
+    font-size: 40px;
+    color: #77c3cd;
+    padding-top: 100px;
+    text-shadow: 1px 1px 10px #fff;
+    margin-bottom: 50px;
+}
+.qa {
+    max-width: 60%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+    background-color: #fff;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.qa summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1em 2em 1em 3em;
+    color: #333333;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qa summary::before,
+.qa p::before {
+    position: absolute;
+    left: 1em;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.qa summary::before {
+    color: #292929;
+    content: "Q";
+}
+
+.qa summary::after {
+    transform: translateY(-25%) rotate(45deg);
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+    border-bottom: 3px solid #333333b3;
+    border-right: 3px solid #333333b3;
+    content: '';
+    transition: transform .5s;
+}
+
+.qa[open] summary::after {
+    transform: rotate(225deg);
+}
+
+.qa p {
+    position: relative;
+    transform: translateY(-10px);
+    opacity: 0;
+    margin: 0;
+    padding: .3em 3em 1.5em;
+    color: #333;
+    transition: transform .5s, opacity .5s;
+    line-height: 1.8;
+}
+
+.qa[open] p {
+    transform: none;
+    opacity: 1;
+}
+
+.qa p::before {
+    color: #2592cf;
+    line-height: 1.2;
+    content: "A";
+}
+
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.pc { display: block !important; }
+.sp { display: none !important; }
+ 
+@media screen and (min-width: 960px) {
+    .nav{
+    display:none;
+    }
+
+    }
+
+/* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
+@media only screen and (max-width: 750px) {
+    .pc { 
+        display: none !important; 
+    }
+
+    .sp {
+        display: block !important; 
+    }
+
+    header {
+        position: fixed;
+        height: 60px;
+        z-index: 99;
+    }
+    header .logo {
+        color: #fff;
+        margin-left: 30px;
+        padding-top: 20px;
+        font-size: 16px;
+    }
+
+    .mainvisual {
+        padding-top: 60px;
+    }
+
+    .cva {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+    .btn-1 {
+        position: absolute;
+        bottom: 63%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform-origin: center;
+        width: 80%;
+    }
+    .btn-2 {
+        position: absolute;
+        bottom: 5%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform-origin: center;
+        width: 80%;
+    }
+
+    .recommendation {
+        position: relative;
+    }
+    
+    .change {
+        position: absolute;
+        bottom: 3%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform-origin: center;
+        width: 80%;
+    }
+    .qa {
+        max-width: 80%;
+    }
+    .qa summary {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .qa p {
+        font-size: 14px;
+    }
+    
+}
